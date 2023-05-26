@@ -4,86 +4,7 @@ import 'package:awesome_top_snackbar/top_snack_bar.dart';
 import 'package:flutter/material.dart';
 
 class AwesomeTopSnackbar extends StatefulWidget {
-  const AwesomeTopSnackbar.success({
-    Key? key,
-    required this.message,
-    this.onCloseClick,
-    this.messagePadding = const EdgeInsets.symmetric(horizontal: 24),
-    this.icon = const Icon(
-      Icons.sentiment_very_satisfied,
-      color: Color(0x15000000),
-      size: 120,
-    ),
-    this.textStyle = const TextStyle(
-      fontWeight: FontWeight.w600,
-      fontSize: 16,
-      color: Colors.white,
-    ),
-    this.maxLines = 2,
-    this.iconRotationAngle = 32,
-    this.iconPositionTop = -10,
-    this.iconPositionLeft = -8,
-    required this.backgroundColor,
-    this.boxShadow = kDefaultBoxShadow,
-    this.borderRadius = kDefaultBorderRadius,
-    this.textScaleFactor = 1.0,
-    this.textAlign = TextAlign.start,
-  }) : super(key: key);
-
-  const AwesomeTopSnackbar.info({
-    Key? key,
-    required this.message,
-    this.onCloseClick,
-    this.messagePadding = const EdgeInsets.symmetric(horizontal: 24),
-    this.icon = const Icon(
-      Icons.sentiment_neutral,
-      color: Color(0x15000000),
-      size: 120,
-    ),
-    this.textStyle = const TextStyle(
-      fontWeight: FontWeight.w600,
-      fontSize: 16,
-      color: Colors.white,
-    ),
-    this.maxLines = 2,
-    this.iconRotationAngle = 32,
-    this.iconPositionTop = -10,
-    this.iconPositionLeft = -8,
-    required this.backgroundColor,
-    this.boxShadow = kDefaultBoxShadow,
-    this.borderRadius = kDefaultBorderRadius,
-    this.textScaleFactor = 1.0,
-    this.textAlign = TextAlign.start,
-  }) : super(key: key);
-
-  const AwesomeTopSnackbar.error({
-    Key? key,
-    required this.message,
-    this.onCloseClick,
-    this.messagePadding = const EdgeInsets.symmetric(horizontal: 24),
-    this.icon = const Icon(
-      Icons.error_outline,
-      color: Color(0x15000000),
-      size: 120,
-    ),
-    this.textStyle = const TextStyle(
-      fontWeight: FontWeight.w600,
-      fontSize: 16,
-      color: Colors.white,
-    ),
-    this.maxLines = 2,
-    this.iconRotationAngle = 32,
-    this.iconPositionTop = -10,
-    this.iconPositionLeft = -8,
-    required this.backgroundColor,
-    this.boxShadow = kDefaultBoxShadow,
-    this.borderRadius = kDefaultBorderRadius,
-    this.textScaleFactor = 1.0,
-    this.textAlign = TextAlign.start,
-  }) : super(key: key);
-
   final String message;
-  final Widget icon;
   final Color backgroundColor;
   final TextStyle textStyle;
   final int maxLines;
@@ -96,6 +17,31 @@ class AwesomeTopSnackbar extends StatefulWidget {
   final double textScaleFactor;
   final TextAlign textAlign;
   final VoidCallback? onCloseClick;
+  final Icon? icon;
+  final BoxDecoration? iconWithDecoration;
+
+  const AwesomeTopSnackbar({
+    Key? key,
+    required this.message,
+    this.onCloseClick,
+    this.messagePadding = const EdgeInsets.symmetric(horizontal: 24),
+    this.textStyle = const TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 16,
+      color: Colors.white,
+    ),
+    this.icon,
+    this.iconWithDecoration,
+    this.maxLines = 2,
+    this.iconRotationAngle = 32,
+    this.iconPositionTop = -10,
+    this.iconPositionLeft = -8,
+    required this.backgroundColor,
+    this.boxShadow = kDefaultBoxShadow,
+    this.borderRadius = kDefaultBorderRadius,
+    this.textScaleFactor = 1.0,
+    this.textAlign = TextAlign.start,
+  }) : super(key: key);
 
   @override
   AwesomeTopSnackbarState createState() => AwesomeTopSnackbarState();
@@ -129,20 +75,16 @@ class AwesomeTopSnackbarState extends State<AwesomeTopSnackbar> {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: widget.onCloseClick,
-            child: Container(
-              height: 32,
-              width: 32,
-              margin: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: widget.backgroundColor,
-                  borderRadius: const BorderRadius.all(Radius.circular(50)),
-                  border: Border.all(color: Colors.white)),
-              child: const Icon(
-                Icons.close,
-                size: 24,
-                color: Colors.white,
+          Visibility(
+            visible: widget.icon == null ? false : true,
+            child: GestureDetector(
+              onTap: widget.onCloseClick,
+              child: Container(
+                height: 32,
+                width: 32,
+                margin: const EdgeInsets.all(10),
+                decoration: widget.iconWithDecoration,
+                child: widget.icon,
               ),
             ),
           ),
@@ -155,7 +97,7 @@ class AwesomeTopSnackbarState extends State<AwesomeTopSnackbar> {
 const kDefaultBoxShadow = [
   BoxShadow(
     color: Colors.black26,
-    offset: Offset(0, 8),
+    offset: Offset(0, 0),
     spreadRadius: 1,
     blurRadius: 30,
   ),
@@ -163,16 +105,14 @@ const kDefaultBoxShadow = [
 
 const kDefaultBorderRadius = BorderRadius.all(Radius.circular(12));
 
-void showSuccessSnackBar(BuildContext context, String message,
-    {Color? backgroundColor}) {
+void awesomeTopSnackbar(BuildContext context, String message, {BoxDecoration? iconWithDecoration, Color? backgroundColor, Icon? icon}) {
   AnimationController? localAnimationController;
 
   showTopSnackBar(
     animationDuration: const Duration(milliseconds: 1000),
     reverseAnimationDuration: const Duration(milliseconds: 350),
     displayDuration: const Duration(milliseconds: 2000),
-    onAnimationControllerInit: (controller) =>
-        localAnimationController = controller,
+    onAnimationControllerInit: (controller) => localAnimationController = controller,
     dismissType: DismissType.onSwipe,
     dismissDirection: [
       DismissDirection.horizontal,
@@ -182,16 +122,18 @@ void showSuccessSnackBar(BuildContext context, String message,
       DismissDirection.startToEnd
     ],
     Overlay.of(context),
-    AwesomeTopSnackbar.success(
+    AwesomeTopSnackbar(
       onCloseClick: () {
         localAnimationController?.reverse();
       },
+      icon: icon,
+      iconWithDecoration: iconWithDecoration,
       message: message,
-      backgroundColor: backgroundColor ?? const Color(0xFF52CC5C),
+      backgroundColor: backgroundColor ?? Theme.of(context).primaryColor,
     ),
   );
 }
-
+/* 
 void showErrorSnackBar(BuildContext context, String message,
     {Color? backgroundColor}) {
   AnimationController? localAnimationController;
@@ -219,4 +161,4 @@ void showErrorSnackBar(BuildContext context, String message,
       backgroundColor: backgroundColor ?? const Color(0xFFE74848),
     ),
   );
-}
+} */
