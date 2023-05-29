@@ -1,39 +1,59 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+CustomSnackBar is a versatile and visually appealing SnackBar widget designed to provide informative and interactive notifications to users within your application. With its customizable features, including icons, background colors, and decorations, you can tailor the appearance to match your app's branding. Whether it's displaying important messages, alerts, or feedback, CustomSnackBar delivers an engaging and user-friendly experience, ensuring your users stay informed and engaged with your app's latest updates.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+<img src="https://raw.githubusercontent.com/pratikandarpa/awesome_top_snackbar/main/example/assets/snackbar_example.gif" width="300">
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Getting Started
 
-## Features
+Introducing the incredible awesomeTopSnackbar function! It's your gateway to displaying stunning CustomSnackBars. All you need to do is pass the context and message, and voila! But wait, there's more! This powerful function also offers optional parameters like icons, background colors, and decorations. Get ready to create snackbar magic like never before!
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## 📱 Implementation
+To use the package:
+- add the dependency to your pubspec.yaml file
 
-## Getting started
+```yaml
+dependencies:
+  flutter:
+      sdk: flutter
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+  awesome_top_snackbar: <latest-package>
 ```
 
-## Additional information
+- Then import it in your flutter project:
+```
+import 'package:awesome_top_snackbar/awesome_top_snackbar.dart';
+```
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+- Example 1:
+```dart
+   awesomeTopSnackbar(context,"Hello world");
+```
+
+- Example 2: (If you want a dismiss icon or any other icon at the end, you can refer to the example below.)
+```dart
+   awesomeTopSnackbar(
+                  context,
+                  "Hello world",
+                   iconWithDecoration: BoxDecoration(borderRadius: BorderRadius.circular(20), border: Border.all(), color: Colors.white),
+                    icon: Icon(
+                      Icons.close,
+                      color: Colors.white,
+                    ) 
+                );
+```
+
+- Example 3: (Custome textstyle)
+```dart
+   awesomeTopSnackbar(
+                    context,
+                    "Hello world ...",
+                    textStyle: const TextStyle(
+                        color: Color.fromARGB(255, 20, 64, 83), fontStyle: FontStyle.italic, fontWeight: FontWeight.w400, fontSize: 24),
+                    backgroundColor: Color.fromARGB(255, 220, 149, 111),
+                    icon: const Icon(Icons.close, color: Colors.white),
+                    iconWithDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.white),
+                    ),
+                  );
+```

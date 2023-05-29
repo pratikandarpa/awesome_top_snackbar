@@ -67,7 +67,7 @@ class AwesomeTopSnackbarState extends State<AwesomeTopSnackbar> {
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
                 widget.message,
-                style: theme.textTheme.bodyText2?.merge(widget.textStyle),
+                style: theme.textTheme.bodyMedium?.merge(widget.textStyle),
                 textAlign: widget.textAlign,
                 overflow: TextOverflow.ellipsis,
                 maxLines: widget.maxLines,
@@ -105,10 +105,11 @@ const kDefaultBoxShadow = [
 
 const kDefaultBorderRadius = BorderRadius.all(Radius.circular(12));
 
-void awesomeTopSnackbar(BuildContext context, String message, {BoxDecoration? iconWithDecoration, Color? backgroundColor, Icon? icon}) {
+void awesomeTopSnackbar(BuildContext context, String message,
+    {BoxDecoration? iconWithDecoration, Color? backgroundColor, Icon? icon, TextStyle? textStyle}) {
   AnimationController? localAnimationController;
 
-  showTopSnackBar(
+  mySnackbar(
     animationDuration: const Duration(milliseconds: 1000),
     reverseAnimationDuration: const Duration(milliseconds: 350),
     displayDuration: const Duration(milliseconds: 2000),
@@ -129,36 +130,13 @@ void awesomeTopSnackbar(BuildContext context, String message, {BoxDecoration? ic
       icon: icon,
       iconWithDecoration: iconWithDecoration,
       message: message,
+      textStyle: textStyle ??
+          Theme.of(context).textTheme.bodyMedium!.merge(TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+                color: Colors.white,
+              )),
       backgroundColor: backgroundColor ?? Theme.of(context).primaryColor,
     ),
   );
 }
-/* 
-void showErrorSnackBar(BuildContext context, String message,
-    {Color? backgroundColor}) {
-  AnimationController? localAnimationController;
-
-  showTopSnackBar(
-    animationDuration: const Duration(milliseconds: 1000),
-    reverseAnimationDuration: const Duration(milliseconds: 350),
-    displayDuration: const Duration(milliseconds: 2000),
-    onAnimationControllerInit: (controller) =>
-        localAnimationController = controller,
-    dismissType: DismissType.onSwipe,
-    dismissDirection: [
-      DismissDirection.horizontal,
-      DismissDirection.vertical,
-      DismissDirection.endToStart,
-      DismissDirection.up,
-      DismissDirection.startToEnd
-    ],
-    Overlay.of(context),
-    AwesomeTopSnackbar.error(
-      onCloseClick: () {
-        localAnimationController?.reverse();
-      },
-      message: message,
-      backgroundColor: backgroundColor ?? const Color(0xFFE74848),
-    ),
-  );
-} */

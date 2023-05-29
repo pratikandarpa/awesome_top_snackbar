@@ -48,22 +48,22 @@ OverlayEntry? _previousEntry;
 /// The [dismissDirection] argument specify in which direction the snackbar
 /// can be dismissed. This argument is only used when [dismissType] is equal
 /// to `DismissType.onSwipe`. Defaults to `[DismissDirection.up]`
-void showTopSnackBar(
-    OverlayState overlayState,
-    Widget child, {
-      Duration animationDuration = const Duration(milliseconds: 1200),
-      Duration reverseAnimationDuration = const Duration(milliseconds: 550),
-      Duration displayDuration = const Duration(milliseconds: 3000),
-      VoidCallback? onTap,
-      bool persistent = false,
-      ControllerCallback? onAnimationControllerInit,
-      EdgeInsets padding = const EdgeInsets.all(16),
-      Curve curve = Curves.elasticOut,
-      Curve reverseCurve = Curves.linearToEaseOut,
-      SafeAreaValues safeAreaValues = const SafeAreaValues(),
-      DismissType dismissType = DismissType.onTap,
-      List<DismissDirection> dismissDirection = const [DismissDirection.up],
-    }) {
+void mySnackbar(
+  OverlayState overlayState,
+  Widget child, {
+  Duration animationDuration = const Duration(milliseconds: 1200),
+  Duration reverseAnimationDuration = const Duration(milliseconds: 550),
+  Duration displayDuration = const Duration(milliseconds: 3000),
+  VoidCallback? onTap,
+  bool persistent = false,
+  ControllerCallback? onAnimationControllerInit,
+  EdgeInsets padding = const EdgeInsets.all(16),
+  Curve curve = Curves.elasticOut,
+  Curve reverseCurve = Curves.linearToEaseOut,
+  SafeAreaValues safeAreaValues = const SafeAreaValues(),
+  DismissType dismissType = DismissType.onTap,
+  List<DismissDirection> dismissDirection = const [DismissDirection.up],
+}) {
   late OverlayEntry _overlayEntry;
   _overlayEntry = OverlayEntry(
     builder: (_) {
@@ -136,8 +136,7 @@ class _TopSnackBar extends StatefulWidget {
   _TopSnackBarState createState() => _TopSnackBarState();
 }
 
-class _TopSnackBarState extends State<_TopSnackBar>
-    with SingleTickerProviderStateMixin {
+class _TopSnackBarState extends State<_TopSnackBar> with SingleTickerProviderStateMixin {
   late final Animation<Offset> _offsetAnimation;
   late final AnimationController _animationController;
 
@@ -153,7 +152,7 @@ class _TopSnackBarState extends State<_TopSnackBar>
       reverseDuration: widget.reverseAnimationDuration,
     );
     _animationController.addStatusListener(
-          (status) {
+      (status) {
         if (status == AnimationStatus.completed && !widget.persistent) {
           _timer = Timer(widget.displayDuration, () {
             if (mounted) {
@@ -204,8 +203,7 @@ class _TopSnackBarState extends State<_TopSnackBar>
           left: widget.safeAreaValues.left,
           right: widget.safeAreaValues.right,
           minimum: widget.safeAreaValues.minimum,
-          maintainBottomViewPadding:
-          widget.safeAreaValues.maintainBottomViewPadding,
+          maintainBottomViewPadding: widget.safeAreaValues.maintainBottomViewPadding,
           child: _buildDismissibleChild(),
         ),
       ),
