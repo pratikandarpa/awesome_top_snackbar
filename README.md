@@ -1,11 +1,11 @@
-CustomSnackBar is a versatile and visually appealing SnackBar widget designed to provide informative and interactive notifications to users within your application. With its customizable features, including icons, background colors, and decorations, you can tailor the appearance to match your app's branding. Whether it's displaying important messages, alerts, or feedback, CustomSnackBar delivers an engaging and user-friendly experience, ensuring your users stay informed and engaged with your app's latest updates.
+CustomSnackBar is a versatile and visually appealing SnackBar widget designed to provide informative and interactive notifications to users within your application. With its customizable features, including icons, background colors, and decorations, and even text styles and you can tailor the appearance to match your app's branding. Additionally, you have the flexibility to dismiss the snackbar from all directions. Whether it's displaying important messages, alerts, or feedback, CustomSnackBar delivers an engaging and user-friendly experience, ensuring your users stay informed and engaged with your app's latest updates.
 
 <img src="https://raw.githubusercontent.com/pratikandarpa/awesome_top_snackbar/main/example/assets/snackbar_example.gif" width="300">
 
 
 # Getting Started
 
-Introducing the incredible awesomeTopSnackbar function! It's your gateway to displaying stunning CustomSnackBars. All you need to do is pass the context and message, and voila! But wait, there's more! This powerful function also offers optional parameters like icons, background colors, and decorations. Get ready to create snackbar magic like never before!
+Introducing the incredible awesomeTopSnackbar! It's your gateway to displaying stunning CustomSnackBars. All you need to do is pass the context and message, and voila! But wait, there's more! This powerful a wide range of customization options, including icons, background colors, decorations, and even text styles. Additionally, you have the flexibility to dismiss the snackbar from all directions. Get ready to unleash the full potential of snackbar magic like never before!
 
 ## 📱 Implementation
 To use the package:
