@@ -1,7 +1,8 @@
 CustomSnackBar is a versatile and visually appealing SnackBar widget designed to provide informative and interactive notifications to users within your application. With its customizable features, including icons, background colors, and decorations, and even text styles and you can tailor the appearance to match your app's branding. Additionally, you have the flexibility to dismiss the snackbar from all directions. Whether it's displaying important messages, alerts, or feedback, CustomSnackBar delivers an engaging and user-friendly experience, ensuring your users stay informed and engaged with your app's latest updates.
 
-<img src="https://raw.githubusercontent.com/pratikandarpa/awesome_top_snackbar/main/example/assets/snackbar_example.gif" width="300">
+# Preview
 
+<img src="https://github.com/SavanSabhaya/awesome_top_snackbar/blob/master/example/assets/snackbar_example.gif" width="300">
 
 # Getting Started
 
