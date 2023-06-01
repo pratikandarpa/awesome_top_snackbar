@@ -1,6 +1,6 @@
 name: awesome_top_snackbar
 description: Introducing the incredible awesomeTopSnackbar! It's your gateway to displaying stunning CustomSnackBars. All you need to do is pass the context and message, and voila!
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/pratikandarpa/awesome_top_snackbar.git
 
 environment:
