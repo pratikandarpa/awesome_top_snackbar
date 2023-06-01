@@ -2,7 +2,7 @@ CustomSnackBar is a versatile and visually appealing SnackBar widget designed to
 
 # Preview
 
-<img src="https://github.com/SavanSabhaya/awesome_top_snackbar/blob/master/example/assets/snackbar_example.gif" width="300">
+<img src="https://github.com/pratikandarpa/awesome_top_snackbar/blob/master/example/assets/snackbar_example.gif" width="300">
 
 # Getting Started
 
