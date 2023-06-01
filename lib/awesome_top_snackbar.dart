@@ -53,7 +53,7 @@ class AwesomeTopSnackbarState extends State<AwesomeTopSnackbar> {
         children: [
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Text(
                 widget.message,
                 style: theme.textTheme.bodyMedium?.merge(widget.textStyle),
@@ -103,12 +103,12 @@ void mySnackbar(
       DismissType dismissType = DismissType.onSwipe,
       List<DismissDirection> dismissDirection = const [DismissDirection.up],
     }) {
-  late OverlayEntry _overlayEntry;
-  _overlayEntry = OverlayEntry(
+  late OverlayEntry overlayEntry;
+  overlayEntry = OverlayEntry(
     builder: (_) {
       return _TopSnackBar(
         onDismissed: () {
-          _overlayEntry.remove();
+          overlayEntry.remove();
           _previousEntry = null;
         },
         animationDuration: animationDuration,
@@ -131,8 +131,8 @@ void mySnackbar(
     _previousEntry?.remove();
   }
 
-  overlayState.insert(_overlayEntry);
-  _previousEntry = _overlayEntry;
+  overlayState.insert(overlayEntry);
+  _previousEntry = overlayEntry;
 }
 
 class _TopSnackBar extends StatefulWidget {
