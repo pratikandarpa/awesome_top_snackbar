@@ -69,7 +69,7 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ); // for the decoration you can use this property
                 },
-                child: const Text('Snackbar 2'),
+                child: const Text('Snackbar 3'),
               ),
             ],
           ),
